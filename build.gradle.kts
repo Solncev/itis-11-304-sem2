@@ -28,11 +28,10 @@ dependencies {
     implementation("jakarta.servlet:jakarta.servlet-api:$jakartaVersion")
     implementation("org.hibernate:hibernate-core:$hibernateVersion")
     implementation("org.postgresql:postgresql:$postgresVersion")
+    implementation("org.springframework.data:spring-data-jpa:3.4.4")
     implementation("com.mchange:c3p0:0.10.2")
     implementation("org.freemarker:freemarker:2.3.34")
-
-    testImplementation(platform("org.junit:junit-bom:5.10.0"))
-    testImplementation("org.junit.jupiter:junit-jupiter")
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.18.3")
 }
 
 tasks.test {

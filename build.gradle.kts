@@ -8,6 +8,7 @@ group = "com.solncev"
 version = "1.0-SNAPSHOT"
 
 val springVersion: String by project
+val springSecurityVersion: String by project
 val jakartaVersion: String by project
 val hibernateVersion: String by project
 val postgresVersion: String by project
@@ -25,6 +26,10 @@ dependencies {
     implementation("org.springframework:spring-jdbc:$springVersion")
     implementation("org.springframework:spring-orm:$springVersion")
     implementation("org.springframework:spring-context-support:$springVersion")
+    implementation("org.springframework.security:spring-security-core:$springSecurityVersion")
+    implementation("org.springframework.security:spring-security-web:$springSecurityVersion")
+    implementation("org.springframework.security:spring-security-config:$springSecurityVersion")
+    implementation("org.springframework.security:spring-security-taglibs:$springSecurityVersion")
     implementation("jakarta.servlet:jakarta.servlet-api:$jakartaVersion")
     implementation("org.hibernate:hibernate-core:$hibernateVersion")
     implementation("org.postgresql:postgresql:$postgresVersion")

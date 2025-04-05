@@ -1,8 +1,6 @@
 package com.solncev.repository;
 
 import com.solncev.entity.User;
-import jakarta.persistence.criteria.CriteriaQuery;
-import jakarta.persistence.criteria.Root;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

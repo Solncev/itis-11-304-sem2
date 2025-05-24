@@ -1,39 +1,20 @@
 package com.solncev.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.Table;
+import org.springframework.security.core.GrantedAuthority;
 
-import java.util.Set;
+public enum Role implements GrantedAuthority {
 
-@Entity
-@Table(name = "roles")
-public class Role {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    ADMIN("ADMIN"),
+    USER("USER");
 
-    private String name;
+    private final String value;
 
-    @ManyToMany(mappedBy = "roles")
-    private Set<User> users;
-
-    public void setId(Long id) {
-        this.id = id;
+    Role(String value) {
+        this.value = value;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    @Override
+    public String getAuthority() {
+        return value;
     }
 }

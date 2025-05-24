@@ -41,6 +41,11 @@ dependencies {
     implementation("org.springframework.security:spring-security-taglibs:$springSecurityVersion")
     implementation("org.apache.tomcat:tomcat-jsp-api:10.1.20")
     implementation("javax.servlet.jsp:jsp-api:2.1")
+
+    implementation("io.jsonwebtoken:jjwt-api:0.11.5")
+    implementation("io.jsonwebtoken:jjwt-impl:0.11.5")
+    implementation("io.jsonwebtoken:jjwt-jackson:0.11.5")
+
     implementation("org.liquibase:liquibase-core:4.20.0")
     liquibaseRuntime("org.liquibase:liquibase-core:4.20.0")
     liquibaseRuntime("org.postgresql:postgresql:$postgresVersion")

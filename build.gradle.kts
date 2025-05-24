@@ -1,8 +1,12 @@
+import java.util.*
+
 plugins {
     id("java")
     id("application")
     id("org.springframework.boot") version "3.4.4"
     id("io.spring.dependency-management") version "1.1.7"
+    id("org.liquibase.gradle") version "2.2.1"
+    id("jacoco")
 }
 
 group = "com.solncev"
@@ -36,8 +40,56 @@ dependencies {
     implementation("org.springframework.security:spring-security-taglibs:$springSecurityVersion")
     implementation("org.apache.tomcat:tomcat-jsp-api:10.1.20")
     implementation("javax.servlet.jsp:jsp-api:2.1")
+    implementation("org.liquibase:liquibase-core:4.20.0")
+    liquibaseRuntime("org.liquibase:liquibase-core:4.20.0")
+    liquibaseRuntime("org.postgresql:postgresql:$postgresVersion")
+    liquibaseRuntime("info.picocli:picocli:4.6.3")
+
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("org.springframework.security:spring-security-test")
+    testImplementation("org.mockito:mockito-junit-jupiter:5.2.0")
 }
 
-tasks.test {
+val props = Properties()
+props.load(file("src/main/resources/db/liquibase.properties").inputStream())
+
+liquibase {
+    activities.register("main") {
+        arguments = mapOf(
+            "changeLogFile" to props.get("change-log-file"),
+            "url" to props.get("url"),
+            "username" to props.get("username"),
+            "password" to props.get("password"),
+            "driver" to props.get("driver-class-name"),
+        )
+    }
+}
+
+tasks.withType<Test>{
     useJUnitPlatform()
+    finalizedBy(tasks.jacocoTestReport)
+}
+
+tasks.jacocoTestReport {
+    dependsOn(tasks.test)
+    reports {
+        xml.required.set(false)
+        csv.required.set(false)
+        html.outputLocation.set(layout.buildDirectory.dir("jacocoHtml"))
+    }
+}
+
+jacoco {
+    toolVersion = "0.8.8"
+    reportsDirectory.set(layout.buildDirectory.dir("jacoco"))
+}
+
+tasks.jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            limit {
+                minimum = BigDecimal.valueOf(0.1)
+            }
+        }
+    }
 }

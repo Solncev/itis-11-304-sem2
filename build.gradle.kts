@@ -33,6 +33,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-freemarker")
     implementation("org.springframework.boot:spring-boot-starter-mail")
     implementation("org.springframework.boot:spring-boot-starter-validation")
+    implementation("org.springframework.boot:spring-boot-starter-aop")
     implementation("jakarta.servlet:jakarta.servlet-api:$jakartaVersion")
     implementation("org.postgresql:postgresql:$postgresVersion")
     implementation("javax.mail:javax.mail-api:1.6.2")

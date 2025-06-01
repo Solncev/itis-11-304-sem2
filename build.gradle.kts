@@ -34,6 +34,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-mail")
     implementation("org.springframework.boot:spring-boot-starter-validation")
     implementation("org.springframework.boot:spring-boot-starter-aop")
+    implementation("org.springframework.boot:spring-boot-starter-websocket")
     implementation("jakarta.servlet:jakarta.servlet-api:$jakartaVersion")
     implementation("org.postgresql:postgresql:$postgresVersion")
     implementation("javax.mail:javax.mail-api:1.6.2")
@@ -45,6 +46,12 @@ dependencies {
     implementation("io.jsonwebtoken:jjwt-api:0.11.5")
     implementation("io.jsonwebtoken:jjwt-impl:0.11.5")
     implementation("io.jsonwebtoken:jjwt-jackson:0.11.5")
+
+    implementation("org.webjars:stomp-websocket:2.3.4")
+    implementation("org.webjars:sockjs-client:1.5.1")
+    implementation("org.webjars:jquery:3.6.0")
+    implementation("org.webjars:bootstrap:4.6.0")
+    implementation("org.webjars:webjars-locator-core:0.46")
 
     implementation("org.liquibase:liquibase-core:4.20.0")
     liquibaseRuntime("org.liquibase:liquibase-core:4.20.0")

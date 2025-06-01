@@ -38,7 +38,7 @@ public class SecurityConfig {
                         .requestMatchers("api/auth/login", "api/auth/token").permitAll()
                         .requestMatchers("/profile").hasAnyRole(Role.USER.getAuthority(), Role.ADMIN.getAuthority())
                         .requestMatchers("/admin/**").hasRole(Role.ADMIN.getAuthority())
-                        .requestMatchers("/index", "/sign_up", "/sign_in", "/user").anonymous()
+                        .requestMatchers("/index", "chat", "/sign_up", "/sign_in", "/user").anonymous()
                 ).addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
